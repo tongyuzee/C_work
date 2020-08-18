@@ -14,17 +14,17 @@ int main() {
         scanf("%d", a+i);
     }
     bubble(a, num);
-    printf("鍐掓场鎺掑簭缁撴灉锛歕n");
+    printf("冒泡排序结果：\n");
     output(a, num);
     select_sort(a, num);
-    printf("閫夋嫨鎺掑簭缁撴灉锛堥�嗗簭锛夛細\n");
+    printf("选择排序结果（逆序）：\n");
     output(a, num);
     return 0;
 }
 void bubble(int *a, int n )
 {
     /*
-     * 鍐掓场鎺掑簭
+     * 冒泡排序
      */
     for (int i = 0; i < n; ++i)
         for (int j = 0; j < n - i - 1; ++j)
@@ -44,6 +44,7 @@ void output(int *a, int n)
     {
         printf("%d ", a[i]);
     }
+    printf("\n");
 }
 void select_sort(int *a, int n)
 {
@@ -51,10 +52,8 @@ void select_sort(int *a, int n)
     {
         int temp = i;
         for (int j = i+1; j < n ; ++j)
-        {
-            if (a[temp] > a[j])
+            if (a[j] > a[temp])
                 temp = j;
-            swap(a+temp, a+i);
-        }
+        swap(a+temp, a+i);
     }
 }
