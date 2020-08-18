@@ -1,0 +1,3 @@
+"D:\Program Files\JetBrains\CLion\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\paixu.dir/objects.a
+"D:\Program Files\mingw64\bin\ar.exe" cr CMakeFiles\paixu.dir/objects.a @CMakeFiles\paixu.dir\objects1.rsp
+"D:\Program Files\mingw64\bin\gcc.exe" -g   -Wl,--whole-archive CMakeFiles\paixu.dir/objects.a -Wl,--no-whole-archive  -o paixu.exe -Wl,--out-implib,libpaixu.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\paixu.dir\linklibs.rsp
