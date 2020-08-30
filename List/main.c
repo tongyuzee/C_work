@@ -39,7 +39,7 @@ int main() {
 
 void InitList(LinkList *L)
 {
-    *L = (LinkList)malloc(sizeof(LNode));    // 创建链表的头节点, L 指向头节点
+    *L = (LinkList)malloc(sizeof(LNode));    // 创建链表的头节点, *L 指向头节点
     (*L)->next = NULL;                         // 初始化链表，初始时为空链表
 }
 void CreatLinkR(LinkList L, int n)
@@ -107,8 +107,7 @@ void LinkContact(LinkList L1, LinkList *L2)
     }
     if (q != NULL && *L2 != NULL) {
         q->next = (*L2)->next;
-        free(*L2);
+        free(*L2);              // 释放链表L2的头节点
         *L2 = NULL;
     }
-
 }
