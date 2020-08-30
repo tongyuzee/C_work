@@ -9,6 +9,7 @@ void InitList(LinkList *L);
 void CreatLinkR(LinkList L, int n);
 void CreatLinkL(LinkList L, int n);
 void TraverseList(LinkList L);
+int LastElem(LinkList L);
 
 int main() {
 
@@ -23,6 +24,7 @@ int main() {
     printf("2.尾插法创建链表：\n");
     CreatLinkR(L, n);
     TraverseList(L);
+    printf("链表的最后一个元素是：%d", LastElem(L));
     return 0;
 }
 
@@ -70,4 +72,17 @@ void TraverseList(LinkList L)
         p = p->next;
     }
     printf("\n");
+}
+int LastElem(LinkList L)
+{
+    /*
+     * 返回链表最后一个元素
+     */
+    LinkList p = L->next;
+    int e;
+    while (p != NULL) {
+        e = p->data;
+        p = p->next;
+    }
+    return e;
 }
