@@ -14,6 +14,7 @@ void LinkContact(LinkList L1, LinkList *L2);
 void DestroyList(LinkList *L);
 int LengthList(LinkList L);
 int InsertList(LinkList L, int i, int e);
+int DeleteList(LinkList L, int i);
 
 int main() {
 
@@ -40,17 +41,27 @@ int main() {
     int i, e, flag;
     printf("请输入需要插入的元素：\ne=");
     scanf("%d", &e);
-    printf("请输入需要插入元素的位置(i<=%d)：\ni=", LengthList(L1));
+    printf("请输入需要插入元素的位置(1<=i<=%d)：\ni=", LengthList(L1));
     scanf("%d", &i);
     flag = InsertList(L1, i, e);
     if (flag == 1)
     {
-        printf("元素插入成功。\n在位置%d插入元素%d后的链表为：\n", i, m);
+        printf("元素插入成功。\n在位置%d后面插入元素%d后的链表为：\n", i, m);
         TraverseList(L1);
     }
     else
         printf("元素插入失败。\n");
 
+    printf("请输入需要插删除元素的位置(1<=i<=%d)：\ni=", LengthList(L1));
+    scanf("%d", &i);
+    flag = DeleteList(L1, i);
+    if (flag == 1)
+    {
+        printf("元素删除成功。\n删除第%d个元素后的链表为：\n", i);
+        TraverseList(L1);
+    }
+    else
+        printf("元素删除失败。\n");
 
     // 销毁链表 L1 和 L2
     // 按照动态内存的使用要求，当不再使用链表时或者程序结束之前，需要将创建列表时分配的所有结点的内存释放掉。
@@ -166,6 +177,9 @@ int InsertList(LinkList L, int i, int e)
 }
 int LengthList(LinkList L)
 {
+    /*
+     * 计算链表长度
+     */
     int cnt = 0;
     LinkList p = L->next;
     while (p != NULL) {
@@ -173,4 +187,20 @@ int LengthList(LinkList L)
         p = p->next;
     }
     return cnt;
+}
+int DeleteList(LinkList L, int i)
+{
+    /*
+     * 删除链表 L 的第 i 个元素
+     */
+    LinkList p = L->next, q;
+    while (p != NULL && i > 1) {
+        q = p;
+        p = p->next;
+        i--;
+    }
+    if (p == NULL || i < 1) return 0;
+    q->next = p->next;
+    free(p);
+    return 1;
 }
