@@ -10,9 +10,11 @@ void CreatLinkL(LinkList L, int n);
 void TraverseList(LinkList L);
 
 int main() {
+
     LinkList L;
     L = (LinkList)malloc(sizeof(LNode));    // 创建链表的头节点, L 指向头节点
     L->next = NULL;                         // 初始化链表，初始时为空链表
+
     int n;
     scanf("%d",&n);
     printf("1.头插法创建链表：\n");
