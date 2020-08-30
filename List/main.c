@@ -10,7 +10,8 @@ void TraverseList(LinkList L);
 
 int main() {
     LinkList L;
-    L = (LinkList)malloc(sizeof(LNode));
+    L = (LinkList)malloc(sizeof(LNode));    // 创建链表的头节点, L 指向头节点
+    L->next = NULL;                         // 初始化链表，初始时为空链表
     int n;
     scanf("%d",&n);
     CreatLinkR(L, n);
@@ -21,6 +22,9 @@ int main() {
 
 void CreatLinkR(LinkList L, int n)
 {
+    /*
+     * 尾插法创建链表
+     */
     LinkList p, s;
     p = L;
     while (n-->0) {
@@ -33,6 +37,9 @@ void CreatLinkR(LinkList L, int n)
 }
 void TraverseList(LinkList L)
 {
+    /*
+     * 遍历链表
+     */
     LinkList p = L->next;
     while (p != NULL){
         printf("%d ",p->data);
