@@ -5,6 +5,7 @@ typedef struct tagNode{
     int data;
     struct tagNode *next;
 } LNode, *LinkList;
+void InitList(LinkList *L);
 void CreatLinkR(LinkList L, int n);
 void CreatLinkL(LinkList L, int n);
 void TraverseList(LinkList L);
@@ -12,8 +13,7 @@ void TraverseList(LinkList L);
 int main() {
 
     LinkList L;
-    L = (LinkList)malloc(sizeof(LNode));    // 创建链表的头节点, L 指向头节点
-    L->next = NULL;                         // 初始化链表，初始时为空链表
+    InitList(&L);
 
     int n;
     scanf("%d",&n);
@@ -26,6 +26,11 @@ int main() {
     return 0;
 }
 
+void InitList(LinkList *L)
+{
+    *L = (LinkList)malloc(sizeof(LNode));    // 创建链表的头节点, L 指向头节点
+    (*L)->next = NULL;                         // 初始化链表，初始时为空链表
+}
 void CreatLinkR(LinkList L, int n)
 {
     /*
