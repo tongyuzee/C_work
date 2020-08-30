@@ -11,6 +11,7 @@ void CreatLinkL(LinkList L, int n);
 void TraverseList(LinkList L);
 int LastElem(LinkList L);
 void LinkContact(LinkList L1, LinkList *L2);
+void DestroyList(LinkList *L);
 
 int main() {
 
@@ -33,6 +34,11 @@ int main() {
     printf("将链表L2接在L1的后面：\n");
     LinkContact(L1, &L2);
     TraverseList(L1);
+
+    // 销毁链表 L1 和 L2
+    // 按照动态内存的使用要求，当不再使用链表时或者程序结束之前，需要将创建列表时分配的所有结点的内存释放掉。
+    DestroyList(&L1);
+    DestroyList(&L2);
 
     return 0;
 }
@@ -110,4 +116,17 @@ void LinkContact(LinkList L1, LinkList *L2)
         free(*L2);              // 释放链表L2的头节点
         *L2 = NULL;
     }
+}
+void DestroyList(LinkList *L)
+{
+    /*
+     * 销毁链表 L
+     */
+    LinkList q, p = *L;
+    while (p != NULL) {
+        q = p;
+        p = p->next;
+        free(q);
+    }
+    *L = NULL;
 }
