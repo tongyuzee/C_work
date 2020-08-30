@@ -6,24 +6,28 @@ typedef struct tagNode{
     struct tagNode *next;
 } LNode, *LinkList;
 void CreatLinkR(LinkList L, int n);
+void CreatLinkL(LinkList L, int n);
 void TraverseList(LinkList L);
 
 int main() {
     LinkList L;
-    L = (LinkList)malloc(sizeof(LNode));    // åˆ›å»ºé“¾è¡¨çš„å¤´èŠ‚ç‚¹, L æŒ‡å‘å¤´èŠ‚ç‚¹
-    L->next = NULL;                         // åˆå§‹åŒ–é“¾è¡¨ï¼Œåˆå§‹æ—¶ä¸ºç©ºé“¾è¡¨
+    L = (LinkList)malloc(sizeof(LNode));    // ´´½¨Á´±íµÄÍ·½Úµã, L Ö¸ÏòÍ·½Úµã
+    L->next = NULL;                         // ³õÊ¼»¯Á´±í£¬³õÊ¼Ê±Îª¿ÕÁ´±í
     int n;
     scanf("%d",&n);
+    printf("1.Í·²å·¨´´½¨Á´±í£º\n");
+    CreatLinkL(L, n);
+    TraverseList(L);
+    printf("2.Î²²å·¨´´½¨Á´±í£º\n");
     CreatLinkR(L, n);
     TraverseList(L);
-    printf("Hello, World!\n");
     return 0;
 }
 
 void CreatLinkR(LinkList L, int n)
 {
     /*
-     * å°¾æ’æ³•åˆ›å»ºé“¾è¡¨
+     * Î²²å·¨´´½¨Á´±í
      */
     LinkList p, s;
     p = L;
@@ -35,10 +39,23 @@ void CreatLinkR(LinkList L, int n)
     }
     p->next = NULL;
 }
+void CreatLinkL(LinkList L, int n)
+{
+    /*
+     * Í·²å·¨´´½¨Á´±í
+     */
+    LinkList p ;
+    while (n-->0) {
+        p = malloc(sizeof(LNode));
+        scanf("%d", &p->data);
+        p->next = L->next;
+        L->next = p;
+    }
+}
 void TraverseList(LinkList L)
 {
     /*
-     * éåŽ†é“¾è¡¨
+     * ±éÀúÁ´±í
      */
     LinkList p = L->next;
     while (p != NULL){
