@@ -22,6 +22,7 @@ int main() {
     InitList(&L1);
     InitList(&L2);
 
+
     int n, m;
     scanf("%d %d",&n,&m);
 
